@@ -40,7 +40,7 @@ const filterByType = (type) => {
       });
   }
 };
-
+// TEST CODE
 const render = () => {
   const breweriesUL = document.querySelector('#breweries-list');
   breweriesUL.innerHTML = '';
