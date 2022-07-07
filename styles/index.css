@@ -123,6 +123,7 @@ h1 {
   grid-area: search-bar;
 
   padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 #search-breweries-form {
