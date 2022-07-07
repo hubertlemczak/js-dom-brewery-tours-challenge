@@ -1,11 +1,6 @@
 const state = {
   breweries: [],
   displayedBreweries: [],
-  breweryTypes: [
-    'https://api.openbrewerydb.org/breweries?by_type=micro&per_page=50',
-    'https://api.openbrewerydb.org/breweries?by_type=regional&per_page=50',
-    'https://api.openbrewerydb.org/breweries?by_type=brewpub&per_page=50',
-  ],
   filter: {
     byType: {
       applied: false,
@@ -45,7 +40,13 @@ const setDisplayedBreweries = () => {
 };
 
 const getBreweries = () => {
-  state.breweryTypes.forEach((type) =>
+  state.breweries = [];
+  const breweryTypes = [
+    'https://api.openbrewerydb.org/breweries?by_type=micro&per_page=50',
+    'https://api.openbrewerydb.org/breweries?by_type=regional&per_page=50',
+    'https://api.openbrewerydb.org/breweries?by_type=brewpub&per_page=50',
+  ];
+  breweryTypes.forEach((type) =>
     fetch(type)
       .then((res) => res.json())
       .then((data) => {
@@ -108,7 +109,7 @@ const stateSearchFormListener = () => {
       newState.byState.applied = false;
       newState.byState.value = value;
     }
-
+    stateSearchForm.reset();
     setState({ filter: newState });
     setDisplayedBreweries();
   });
